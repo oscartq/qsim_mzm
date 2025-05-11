@@ -4,10 +4,10 @@
 \usepackage{graphicx}
 
 \begin{document}
-\scalebox{1.0}{
-\Qcircuit @C=1.0em @R=1.0em @!R { \\
-	 	\nghost{{q}_{0} :  } & \lstick{{q}_{0} :  } & \multigate{2}{\mathrm{exp(it\,III)}}_<<<{0} & \multigate{2}{\mathrm{exp(it\,ZII)}}_<<<{0} & \qw & \qw & \multigate{2}{\mathrm{exp(it\,III)}}_<<<{0} & \multigate{2}{\mathrm{exp(it\,IZI)}}_<<<{0} & \multigate{1}{\mathrm{R_{YY}}\,(\mathrm{0})}_<<<{0} & \multigate{1}{\mathrm{R_{XX}}\,(\mathrm{2\pi})}_<<<{0} & \multigate{2}{\mathrm{exp(it\,III)}}_<<<{0} & \multigate{2}{\mathrm{exp(it\,IIZ)}}_<<<{0} & \qw & \qw\\
-	 	\nghost{{q}_{1} :  } & \lstick{{q}_{1} :  } & \ghost{\mathrm{exp(it\,III)}}_<<<{1} & \ghost{\mathrm{exp(it\,ZII)}}_<<<{1} & \multigate{1}{\mathrm{R_{YY}}\,(\mathrm{0})}_<<<{0} & \multigate{1}{\mathrm{R_{XX}}\,(\mathrm{2\pi})}_<<<{0} & \ghost{\mathrm{exp(it\,III)}}_<<<{1} & \ghost{\mathrm{exp(it\,IZI)}}_<<<{1} & \ghost{\mathrm{R_{YY}}\,(\mathrm{0})}_<<<{1} & \ghost{\mathrm{R_{XX}}\,(\mathrm{2\pi})}_<<<{1} & \ghost{\mathrm{exp(it\,III)}}_<<<{1} & \ghost{\mathrm{exp(it\,IIZ)}}_<<<{1} & \qw & \qw\\
-	 	\nghost{{q}_{2} :  } & \lstick{{q}_{2} :  } & \ghost{\mathrm{exp(it\,III)}}_<<<{2} & \ghost{\mathrm{exp(it\,ZII)}}_<<<{2} & \ghost{\mathrm{R_{YY}}\,(\mathrm{0})}_<<<{1} & \ghost{\mathrm{R_{XX}}\,(\mathrm{2\pi})}_<<<{1} & \ghost{\mathrm{exp(it\,III)}}_<<<{2} & \ghost{\mathrm{exp(it\,IZI)}}_<<<{2} & \qw & \qw & \ghost{\mathrm{exp(it\,III)}}_<<<{2} & \ghost{\mathrm{exp(it\,IIZ)}}_<<<{2} & \qw & \qw\\
+\scalebox{1.0}{{$\mathrm{global\,phase:\,} \mathrm{\frac{\pi}{2}}$}
+\Qcircuit @C=1.0em @R=0.2em @!R { \\
+	 	\nghost{{q}_{0} :  } & \lstick{{q}_{0} :  } & \gate{\mathrm{R_X}\,(\mathrm{\frac{\pi}{2}})} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \ctrl{1} & \qw & \ctrl{1} & \gate{\mathrm{R_X}\,(\mathrm{\frac{-\pi}{2}})} & \gate{\mathrm{H}} & \ctrl{1} & \qw & \ctrl{1} & \gate{\mathrm{H}} & \gate{\mathrm{R_Z}\,(\mathrm{-\pi})} & \qw & \qw\\
+	 	\nghost{{q}_{1} :  } & \lstick{{q}_{1} :  } & \gate{\mathrm{R_X}\,(\mathrm{\frac{\pi}{2}})} & \qw & \ctrl{1} & \qw & \ctrl{1} & \gate{\mathrm{R_X}\,(\mathrm{\frac{-\pi}{2}})} & \gate{\mathrm{H}} & \ctrl{1} & \qw & \ctrl{1} & \gate{\mathrm{H}} & \gate{\mathrm{R_Z}\,(\mathrm{-\pi})} & \gate{\mathrm{R_X}\,(\mathrm{\frac{\pi}{2}})} & \targ & \gate{\mathrm{R_Z}\,(\mathrm{0})} & \targ & \gate{\mathrm{R_X}\,(\mathrm{\frac{-\pi}{2}})} & \gate{\mathrm{H}} & \targ & \gate{\mathrm{R_Z}\,(\mathrm{2\pi})} & \targ & \gate{\mathrm{H}} & \qw & \qw & \qw\\
+	 	\nghost{{q}_{2} :  } & \lstick{{q}_{2} :  } & \gate{\mathrm{R_Z}\,(\mathrm{-\pi})} & \gate{\mathrm{R_X}\,(\mathrm{\frac{\pi}{2}})} & \targ & \gate{\mathrm{R_Z}\,(\mathrm{0})} & \targ & \gate{\mathrm{R_X}\,(\mathrm{\frac{-\pi}{2}})} & \gate{\mathrm{H}} & \targ & \gate{\mathrm{R_Z}\,(\mathrm{2\pi})} & \targ & \gate{\mathrm{H}} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw\\
 \\ }}
 \end{document}
