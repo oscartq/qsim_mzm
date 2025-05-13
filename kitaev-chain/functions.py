@@ -10,6 +10,7 @@ def compute_U(H, t):
 def exact_time_evolution(H,obseravble, initial_state, times, num_sites):
     evo_matrix = np.zeros((len(times), num_sites))
     var_matrix = np.zeros(len(times))
+    
     for i, time in enumerate(tqdm(times)):
         for j, oi in enumerate(obseravble):
             # Compute the time evolution operator U(time) at time time
