@@ -10,7 +10,7 @@ def compute_U(H, t):
 def exact_time_evolution(H,observable, initial_state, times, num_sites):
     evo_matrix = np.zeros((len(times), num_sites))
     var_matrix = np.zeros(len(times))
-    
+
     for i, time in enumerate(tqdm(times)):
         for j, oi in enumerate(observable):
             # Compute the time evolution operator U(time) at time time
@@ -23,6 +23,34 @@ def exact_time_evolution(H,observable, initial_state, times, num_sites):
             np.abs((final_state.adjoint() @ (sum(observable) @ sum(observable)) @ final_state).eval())
             - np.abs((final_state.adjoint() @ sum(observable) @ final_state).eval()) ** 2
         )
+    return evo_matrix, var_matrix
+
+def exact_time_evolution_energy(H, initial_state, times, num_sites):
+    evo_matrix = np.zeros((len(times)))
+    var_matrix = np.zeros(len(times))
+    
+    for i, time in enumerate(tqdm(times)):
+        # Compute the time evolution operator U(time) at time time
+        U = compute_U(H, time)
+        # Compute the evolution of the initial state
+        final_state = U @ initial_state
+        # Compute the expectation value n_i
+        evo_matrix[i] = np.abs((final_state.adjoint() @ H @ final_state).eval())
+    
+    return evo_matrix, var_matrix
+
+def exact_time_evolution_density(H, initial_state, times, num_sites):
+    evo_matrix = np.zeros((len(times)))
+    var_matrix = np.zeros(len(times))
+    
+    for i, time in enumerate(tqdm(times)):
+        # Compute the time evolution operator U(time) at time time
+        U = compute_U(H, time)
+        # Compute the evolution of the initial state
+        final_state = U @ initial_state
+        # Compute the expectation value n_i
+        evo_matrix[i] = (final_state @ final_state.adjoint()).eval()
+    
     return evo_matrix, var_matrix
 
 def compute_U_trot(H, time, trotter_steps, order=1):

@@ -18,6 +18,22 @@ def n_op(num_sites):
     ]
     return n_is
 
+def corr_op(num_sites, site1, site2):
+    corr=FermionicOp("-_"+str(site1), register_length = num_sites)@FermionicOp("-_"+str(site2), register_length = num_sites)
+
+    jw_mapper = JordanWignerMapper
+    corr_JW = [JordanWignerMapper.map(jw_mapper, corr)]
+
+    return corr_JW
+
+def corr_dagger_op(num_sites, site1, site2):
+    corr=FermionicOp("+_"+str(site1), register_length = num_sites)@FermionicOp("+_"+str(site2), register_length = num_sites)
+
+    jw_mapper = JordanWignerMapper
+    corr_JW = [JordanWignerMapper.map(jw_mapper, corr)]
+    
+    return corr_JW
+
 def cc_site_op(num_sites):
     cc_op = [
         0.0 * (I ^ num_sites)
