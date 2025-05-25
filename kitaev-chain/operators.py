@@ -34,6 +34,16 @@ def corr_dagger_op(num_sites, site1, site2):
     
     return corr_JW
 
+def gamma_corr_op(num_sites, siteA, siteB):
+    gamma_corr_1 = FermionicOp("-_"+str(siteA), register_length = num_sites) + FermionicOp("+_"+str(siteA), register_length = num_sites)
+    gamma_corr_2 = 1.0j * (FermionicOp("+_"+str(siteB), register_length = num_sites) - FermionicOp("-_"+str(siteB), register_length = num_sites))
+    gamma_corr = gamma_corr_1 @ gamma_corr_2
+
+    jw_mapper = JordanWignerMapper
+    gamma_corr_JW = [JordanWignerMapper.map(jw_mapper, gamma_corr)]
+
+    return gamma_corr_JW 
+
 def cc_site_op(num_sites):
     cc_op = [
         0.0 * (I ^ num_sites)
