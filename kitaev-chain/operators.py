@@ -12,11 +12,13 @@ def p_op(num_sites):
 
 #Number operator
 def n_op(num_sites):
-    n_is = [
-    1 / 2 * ((I ^ num_sites) - ((I ^ i) ^ Z ^ (I ^ (num_sites - i - 1))))
-    for i in range(num_sites)
-    ]
-    return n_is
+    n_op_JW = []
+    for i in range(num_sites):
+        n_op = FermionicOp("+_"+str(i), register_length = num_sites) @ FermionicOp("-_"+str(i), register_length = num_sites)
+        jw_mapper = JordanWignerMapper
+        n_op_JW.append(JordanWignerMapper.map(jw_mapper, n_op))
+    
+    return n_op_JW
 
 def corr_op(num_sites, site1, site2):
     corr=FermionicOp("-_"+str(site1), register_length = num_sites)@FermionicOp("-_"+str(site2), register_length = num_sites)
